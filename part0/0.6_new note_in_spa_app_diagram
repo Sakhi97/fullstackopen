@@ -4,35 +4,9 @@ sequenceDiagram
     participant browser
     participant server
    
-    browser->>server: GET  https://studies.cs.helsinki.fi/exampleapp/spa
+    browser->>server: POST  https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+    Note left of server:  The new note "Hello" is sent in JSON
     activate server
-    server-->>browser: HTML code
+    server-->>browser: status code 201 created
     deactivate server
-    
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
-    activate server
-    server-->>browser: main.css
-    deactivate server
-    
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa.js
-    activate server
-    server-->>browser: spa.js
-    deactivate server
-    
-    Note right of browser: The browser starts executing the JavaScript code that fetches the JSON from the server
-    
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
-    activate server
-    server-->>browser: [{ "content": "", "date": "2024-01-16" }, ... ]
-    deactivate server
-
-    Note right of browser: The browser executes the callback function that renders the notes
-
-    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
-    activate server
-    server-->> HTTP status code 302
-    deactivate server
-
-    Note right of browser: The browser executes the callback function that renders the notes
-
     
