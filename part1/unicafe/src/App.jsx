@@ -1,5 +1,20 @@
 import { useState } from 'react'
 
+const StatisticLine = (props) => {
+  return (
+    <tr>
+      <td>{props.text}</td>
+      <td>{props.value}</td>
+   </tr>
+  )
+}
+
+const Button = (props) => {
+  return (
+      <button onClick={props.onClick} >{props.text}</button>
+  )
+}
+
 const Statistics = (props) => {  
   const sum = props.good + props.neutral + props.bad
     if (sum === 0){
@@ -23,20 +38,6 @@ const Statistics = (props) => {
   )
 }
 
-const StatisticLine = (props) => {
-  return (
-    <tr>
-      <td>{props.text}</td>
-      <td>{props.value}</td>
-   </tr>
-  )
-}
-
-const Button = (props) => {
-  return (
-      <button onClick={props.onClick} >{props.text}</button>
-  )
-}
 
 const App = () => {
 
