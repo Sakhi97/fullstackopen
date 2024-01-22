@@ -5,13 +5,22 @@ const App = () => {
     { name: 'Arto Hellas' }
   ]);
   const [newName, setNewName] = useState('');
+  const [alertMessage, setAlertMessage] = useState('');
 
   const addPersona = (event) => {
     event.preventDefault();
-    setPersons([...persons, { name: newName }]);
-    setNewName('');
-  };
 
+    const isPersonExist = persons.some(person => person.name === newName);
+    
+    if (isPersonExist) {
+      setAlertMessage(`${newName} already exists in the phonebook!`);
+      alert(alertMessage)
+    } else {
+      setPersons([...persons, { name: newName }]);
+      setNewName('');
+      setAlertMessage('');
+    }
+  };
   return (
     <div>
       <h2>Phonebook</h2>
